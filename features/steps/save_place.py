@@ -3,7 +3,7 @@ from modules import maps_functions, record_audio, ya_speech
 from modules import additional_funcs, locations
 
 
-@then('user says "Save my location"')
+@when('user says "Save my location"')
 def get_location(context):
     save_loc = ya_speech.recognize("audio_files/save_location.wav")
     assert save_loc == "сохранить текущее местоположение"
@@ -25,23 +25,13 @@ def approve_location(context):
     assert ya_speech.recognize(context.va) == "подтверждаете"
 
 
-@when('User says "Yes"')
-def save_confirm(context):
-    assert ya_speech.recognize("audio_files/da.wav") == 'да'
-
-
-@when('User says "No"')
-def save_confirm(context):
-    assert ya_speech.recognize("audio_files/net.wav") == 'нет'
-
-
 @then('VA asks "How to name?"')
 def location_name(context):
     ya_speech.synthesize('Задай имя', context.va)
     assert ya_speech.recognize(context.va) == "задай имя"
 
 
-@then('User says {name}')
+@when('User says {name}')
 def location_name(context, name):
     if name != 'nothing':
         ya_speech.synthesize(name, context.user)

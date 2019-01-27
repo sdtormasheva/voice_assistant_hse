@@ -7,6 +7,8 @@ from modules import additional_funcs, locations
 def listener(context):
     context.user = "audio_files/behave_user.wav"
     context.va = "audio_files/behave_va.wav"
+    context.current_task = ''
+    context.current_task_finished = False
     # record_audio.listen(context.user)
     pass
 
@@ -18,7 +20,23 @@ def hello_boris(context):
     assert hello == 'привет борис'
 
 
-@when('VA says "Hello"')
+@then('VA says "Hello"')
 def hello_user(context):
     ya_speech.synthesize('Привет!', context.va)
     assert ya_speech.recognize(context.va) == "привет"
+
+
+@when('User says "Yes"')
+def save_confirm(context):
+    assert ya_speech.recognize("audio_files/da.wav") == 'да'
+
+
+@when('User says "No"')
+def save_confirm(context):
+    assert ya_speech.recognize("audio_files/net.wav") == 'нет'
+
+
+@then('VA says "Cancelled"')
+def save_confirm(context):
+    ya_speech.synthesize('задача отменена', context.va)
+    pass
