@@ -7,7 +7,7 @@ Feature: Save particular place
     And VA says "Hello"
     Then user says "Save my location"
     And VA names location and asks "Confirm?"
-    When User says "Yes"
+    Then User says "Yes"
     And VA asks "How to name?"
     Then User says Библиотека
     Then VA says "Location is saved"
