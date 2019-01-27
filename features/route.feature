@@ -5,53 +5,53 @@ Feature: Route Setup
   Scenario: Assitant set up route between two saved places via foot
     Given service is working
     When user says "Hello, Borya"
-    And VA says "Hello"
-    Then user says "Set up route from Пашин дом to Библиотека
-    And VA says Пашин дом to Библиотека and "Which way?"
-    Then User says "On foot"
-    And VA says time
+    Then VA says "Hello"
+    When user says "Set up route from Пашин дом to Библиотека
+    Then VA says Пашин дом to Библиотека and "Which way?"
+    When User says "On foot"
+    Then VA says time
 
    Scenario: Assitant set up route between two saved places via car
     Given service is working
     When user says "Hello, Borya"
-    And VA says "Hello"
-    Then user says "Set up route from Пашин дом to Библиотека
-    And VA says Пашин дом to Библиотека. "Which way?"
-    Then User says "Car"
-    And VA says time
+    Then VA says "Hello"
+    When user says "Set up route from Пашин дом to Библиотека
+    Then VA says Пашин дом to Библиотека. "Which way?"
+    When User says "Car"
+    Then VA says time
 
    Scenario: Assitant set up route between two saved places via public transport
     Given service is working
     When user says "Hello, Borya"
-    And VA says "Hello"
-    Then user says "Set up route from Пашин дом to Библиотека
-    And VA says Пашин дом to Библиотека. "Which way?"
-    Then User says "Public transport"
-    And VA says time
+    Then VA says "Hello"
+    When user says "Set up route from Пашин дом to Библиотека
+    Then VA says Пашин дом to Библиотека. "Which way?"
+    When User says "Public transport"
+    Then VA says time
 
    Scenario: Assitant set up route between geolocation and place via foot
     Given service is working
     When user says "Hello, Borya"
-    And VA says "Hello"
-    Then user says "Set up route to Библиотека
-    And VA says to Библиотека and "Which way?"
-    Then User says "On foot"
-    And VA says time
+    Then VA says "Hello"
+    When user says "Set up route to Библиотека
+    Then VA says to Библиотека and "Which way?"
+    When User says "On foot"
+    Then VA says time
 
    Scenario: Assitant set up route between geolocation and place via car
     Given service is working
     When user says "Hello, Borya"
-    And VA says "Hello"
-    Then user says "Set up route to Библиотека
-    And VA says to Библиотека and "Which way?"
-    Then User says "Car"
-    And VA says time
+    Then VA says "Hello"
+    When user says "Set up route to Библиотека
+    Then VA says to Библиотека and "Which way?"
+    When User says "Car"
+    Then VA says time
 
    Scenario: Assitant set up route between geolocation and place via public transport
     Given service is working
     When user says "Hello, Borya"
-    And VA says "Hello"
-    Then user says "Set up route to Библиотека
-    And VA says to Библиотека and "Which way?"
-    Then User says "Public transport"
-    And VA says time
+    Then VA says "Hello"
+    When user says "Set up route to Библиотека
+    Then VA says to Библиотека and "Which way?"
+    When User says "Public transport"
+    Then VA says time
