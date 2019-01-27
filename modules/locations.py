@@ -16,9 +16,10 @@ def update_locations(locations):
 
 
 def add_location(name, point):
+    name_clear = name.lower()
     locations = get_locations()
-    if name not in locations:
-        locations[name] = point
+    if name_clear not in locations:
+        locations[name_clear] = point
         update_locations(locations)
         return "ok"
     else:
@@ -26,9 +27,10 @@ def add_location(name, point):
 
 
 def remove_location(name):
+    name_clear = name.lower()
     locations = get_locations()
-    if name in locations:
-        locations.pop(name, None)
+    if name_clear in locations:
+        locations.pop(name_clear, None)
         update_locations(locations)
         return "ok"
     else:
@@ -36,8 +38,9 @@ def remove_location(name):
 
 
 def get_by_name(name):
+    name_clear = name.lower()
     locations = get_locations()
-    if name in locations:
-        return locations[name]
-    else:
-        return "not found"
+    for key in locations:
+        if name_clear == key:
+            return locations[key]
+    return "not found"
