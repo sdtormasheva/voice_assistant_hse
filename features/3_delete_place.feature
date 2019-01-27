@@ -6,7 +6,7 @@ Feature: delete saved place
     Given service is working
     When user says "Hello, Borya"
     Then VA says "Hello"
-    When user says delete Библиотека
+    When user says delete Унылое место
     Then VA repeats place name and address
     And VA Asks "Delete?"
     When User says "No"
@@ -16,7 +16,7 @@ Feature: delete saved place
     Given service is working
     When user says "Hello, Borya"
     Then VA says "Hello"
-    When user says delete Библиотека
+    When user says delete Унылое место
     Then VA repeats place name and address
     And VA Asks "Delete?"
     When User says "Yes"
