@@ -24,47 +24,35 @@ Feature: Route Setup
   Then VA validates locations
   And VA says "Invalid location(s)"
 
-#   Scenario: Assitant set up route between two saved places via car
-#    Given service is working
-#    When user says "Hello, Borya"
-#    Then VA says "Hello"
-#    When user says "Set up route from Пашин дом to Библиотека
-#    Then VA says Пашин дом to Библиотека. "Which way?"
-#    When User says "Car"
-#    Then VA says time
-#
-#   Scenario: Assitant set up route between two saved places via public transport
-#    Given service is working
-#    When user says "Hello, Borya"
-#    Then VA says "Hello"
-#    When user says "Set up route from Пашин дом to Библиотека
-#    Then VA says Пашин дом to Библиотека. "Which way?"
-#    When User says "Public transport"
-#    Then VA says time
-#
-#   Scenario: Assitant set up route between geolocation and place via foot
-#    Given service is working
-#    When user says "Hello, Borya"
-#    Then VA says "Hello"
-#    When user says "Set up route to Библиотека
-#    Then VA says to Библиотека and "Which way?"
-#    When User says "On foot"
-#    Then VA says time
-#
-#   Scenario: Assitant set up route between geolocation and place via car
-#    Given service is working
-#    When user says "Hello, Borya"
-#    Then VA says "Hello"
-#    When user says "Set up route to Библиотека
-#    Then VA says to Библиотека and "Which way?"
-#    When User says "Car"
-#    Then VA says time
-#
-#   Scenario: Assitant set up route between geolocation and place via public transport
-#    Given service is working
-#    When user says "Hello, Borya"
-#    Then VA says "Hello"
-#    When user says "Set up route to Библиотека
-#    Then VA says to Библиотека and "Which way?"
-#    When User says "Public transport"
-#    Then VA says time
+ Scenario: Assistant sets up route between two saved places by car
+  Given service is working
+  And locations Пашин дом and Библиотека are saved
+  When user says "Hello, Borya"
+  Then VA says "Hello"
+  When user says Set up route from Пашин дом to Библиотека
+  Then VA validates locations
+  When VA asks "Which way?"
+  And User says go by car
+  Then VA says time
+
+ Scenario: Assistant sets up route between two saved places by public transport
+  Given service is working
+  And locations Пашин дом and Библиотека are saved
+  When user says "Hello, Borya"
+  Then VA says "Hello"
+  When user says Set up route from Пашин дом to Библиотека
+  Then VA validates locations
+  When VA asks "Which way?"
+  And User says go by transport
+  Then VA says time
+
+ Scenario: Assistant sets up route between the current location and the saved place by car
+  Given service is working
+  And locations Пашин дом and Библиотека are saved
+  When user says "Hello, Borya"
+  Then VA says "Hello"
+  When user says Set up route to Библиотека
+  Then VA validates locations
+  When VA asks "Which way?"
+  And User says go by car
+  Then VA says time

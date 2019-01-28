@@ -19,6 +19,13 @@ def step_impl(context, origin, destination):
     context.route_to = destination
 
 
+@when('user says Set up route to {destination}')
+def step_impl(context, destination):
+    context.command = 'route'
+    context.route_from = 'current'
+    context.route_to = destination
+
+
 @when(u'User says go by {mode}')
 def step_impl(context, mode):
     if mode == 'foot':
@@ -33,13 +40,17 @@ def step_impl(context, mode):
 
 @then(u'VA validates locations')
 def step_impl(context):
-    context.route_from = locations.get_by_name(context.route_from)
+    if context.route_from == 'current':
+        context.route_from = maps_functions.get_current_geo()
+    else:
+        context.route_from = locations.get_by_name(context.route_from)
     context.route_to = locations.get_by_name(context.route_to)
 
 
 @when(u'VA asks "Which way?"')
 def step_impl(context):
     assert context.route_from != 'not found' and context.route_to != 'not found'
+    assert context.route_from is not None and context.route_to is not None
 
 
 @then(u'VA says time')
