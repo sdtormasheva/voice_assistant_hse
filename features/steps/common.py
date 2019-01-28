@@ -3,6 +3,9 @@ from modules import maps_functions, record_audio, ya_speech
 from modules import additional_funcs, locations
 
 
+commands = ['save', 'edit', 'delete', 'route']
+
+
 @given('service is working')
 def listener(context):
     context.user = "audio_files/behave_user.wav"
