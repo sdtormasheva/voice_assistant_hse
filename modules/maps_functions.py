@@ -34,7 +34,7 @@ def get_geo(address):
         #     else:
         #         break
         # location_name = ' '.join(location_name[::-1])
-        return location_geo, location_name
+        return location_geo
     else:
         return None
 

@@ -6,19 +6,21 @@ Feature: delete saved place
     Given service is working
     When user says "Hello, Borya"
     Then VA says "Hello"
-    When user says delete Библиотека
-    Then VA repeats place name and address and asks "Delete?"
+    When user says delete Унылое место
+    Then VA repeats place name and address
+    And VA Asks "Delete?"
     When User says "No"
-    And VA says "Cancelled"
+    Then VA says "Cancelled"
 
   Scenario: User asks to delete saved place and VA removes it from storage
     Given service is working
     When user says "Hello, Borya"
     Then VA says "Hello"
-    When user says delete Библиотека
-    Then VA repeats place name and address and asks "Delete?"
+    When user says delete Унылое место
+    Then VA repeats place name and address
+    And VA Asks "Delete?"
     When User says "Yes"
-    And VA says "Deleted"
+    Then VA deletes place and says "Deleted"
 
   Scenario: User asks to delete saved place, but it does not exist
     Given service is working
