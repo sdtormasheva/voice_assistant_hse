@@ -4,7 +4,12 @@ from modules import additional_funcs, locations, directions
 
 route_modes = ['walking', 'driving', 'transit']
 
-# Actions ----------
+
+@given('locations Пашин дом and Библиотека are saved')
+def step_impl(context):
+    d = {'пашин дом': {'lat': 59.93852459999999, 'lng': 30.2266464},
+         'библиотека': {'lat': 59.94315899999999, 'lng': 30.2350171}}
+    locations.update_locations(d)
 
 
 @when('user says Set up route from {origin} to {destination}')
@@ -26,9 +31,6 @@ def step_impl(context, mode):
         context.route_mode = None
 
 
-# Outcomes ----------
-
-
 @then(u'VA validates locations')
 def step_impl(context):
     context.route_from = locations.get_by_name(context.route_from)
@@ -37,8 +39,7 @@ def step_impl(context):
 
 @when(u'VA asks "Which way?"')
 def step_impl(context):
-    assert context.route_from != 'not found'
-    assert context.route_to != 'not found'
+    assert context.route_from != 'not found' and context.route_to != 'not found'
 
 
 @then(u'VA says time')
@@ -47,6 +48,7 @@ def step_impl(context):
                                       context.route_from,
                                       context.route_mode)
     assert route is not None
+    context.route = route
     dur = directions.route_duration(route)
     ya_speech.synthesize('Маршрут займет ' + str(dur) + ' минут', context.va)
 
@@ -56,6 +58,12 @@ def step_impl(context):
     assert context.route_from == 'not found' or context.route_to == 'not found'
 
 
-@then(u'user says "Start!"')
+@when(u'user gives command to start the route')
 def step_impl(context):
     ya_speech.synthesize('Начать маршрут', context.va)
+
+
+@then(u'VA follows the route')
+def step_impl(context):
+    # mock
+    pass

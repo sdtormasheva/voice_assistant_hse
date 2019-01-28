@@ -4,6 +4,7 @@ Feature: Route Setup
 
  Scenario: Assistant sets up route between two saved places on foot
   Given service is working
+  And locations Пашин дом and Библиотека are saved
   When user says "Hello, Borya"
   Then VA says "Hello"
   When user says Set up route from Пашин дом to Библиотека
@@ -12,13 +13,14 @@ Feature: Route Setup
   And User says go by foot
   Then VA says time
   #  optional
-  And user says "Start!"
+  When user gives command to start the route
+  Then VA follows the route
 
   Scenario: Assistant sets up route between two saved places, but location(s) does not exist
   Given service is working
   When user says "Hello, Borya"
   Then VA says "Hello"
-  When user says Set up route from Пашин дом to Библиотека
+  When user says Set up route from Университет to Дом
   Then VA validates locations
   And VA says "Invalid location(s)"
 
